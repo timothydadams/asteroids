@@ -1,4 +1,4 @@
-from pygame import display,Surface
+from pygame import event as e, display, Surface, QUIT
 from constants import SCREEN_HEIGHT, SCREEN_WIDTH, ASTEROID_KINDS, ASTEROID_MAX_RADIUS, ASTEROID_MIN_RADIUS,ASTEROID_SPAWN_RATE
 
 def main():
@@ -10,6 +10,10 @@ def main():
 
     try:
         while True:
+            for event in e.get():
+                if event.type == QUIT:
+                    return
+                
             Surface.fill(screen, (0,0,0))
             display.flip()
     except KeyboardInterrupt:
